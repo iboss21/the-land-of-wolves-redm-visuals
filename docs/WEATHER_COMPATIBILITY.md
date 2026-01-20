@@ -24,6 +24,8 @@ The system automatically detects the following weather resources:
 - `redm-weather`
 - `advanced-weather`
 
+> **Note:** This list can be customized in `config.lua` by editing `Config.Weather.ConflictingResources`. If your weather script isn't detected automatically, you can add it to this list.
+
 When any of these resources are running, the visual system will:
 1. ✅ Automatically disable its weather control
 2. 📢 Log a warning message explaining the conflict
@@ -188,7 +190,19 @@ Config.Weather = {
 ### Custom Weather Scripts
 If your weather script isn't auto-detected:
 1. Manually set `Config.Weather.Enabled = false`
-2. Or add your resource name to the conflict detection list in `server/server.lua`
+2. Or add your resource name to the conflict detection list in `config.lua`:
+   ```lua
+   Config.Weather.ConflictingResources = {
+       "weathersync",
+       "qb-weathersync",
+       "vorp_weather",
+       "rsg-weathersync",
+       "weather",
+       "redm-weather",
+       "advanced-weather",
+       "your-weather-script-name" -- Add your custom weather resource here
+   }
+   ```
 
 ## Technical Details
 

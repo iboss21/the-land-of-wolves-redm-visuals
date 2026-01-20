@@ -85,11 +85,17 @@ These files serve as **reference documentation** for the visual effects system. 
 
 ## Important Notes
 
-⚠️ **These files are NOT directly loaded by the game** - RedM/FiveM doesn't support direct game file modification in server resources.
+---
+⚠️ **CRITICAL: THESE FILES ARE NOT DIRECTLY LOADED BY THE GAME** ⚠️
 
-✅ **Instead:** The values from these files have been analyzed and implemented as Lua configuration options that use native RedM functions to achieve similar visual results.
+RedM/FiveM servers do NOT support direct game file modification through server resources.
 
-🎨 **Purpose:** These files document the source of visual settings and serve as reference for future tuning and optimization.
+✅ **How It Actually Works:**
+The values from these files have been analyzed and implemented as Lua configuration options in `config.lua` that use native RedM functions to achieve similar visual results.
+
+🎨 **Purpose of These Files:**
+These files document the source of visual settings and serve as reference for future tuning and optimization.
+---
 
 ## Modifying Visual Settings
 

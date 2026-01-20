@@ -51,15 +51,8 @@ local function CheckWeatherConflicts()
         return false
     end
     
-    local conflictingResources = {
-        "weathersync",
-        "qb-weathersync",
-        "vorp_weather",
-        "rsg-weathersync",
-        "weather",
-        "redm-weather",
-        "advanced-weather"
-    }
+    -- Use the configurable list from Config
+    local conflictingResources = Config.Weather.ConflictingResources or {}
     
     for _, resourceName in ipairs(conflictingResources) do
         if GetResourceState(resourceName) == "started" or GetResourceState(resourceName) == "starting" then

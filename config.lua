@@ -60,6 +60,17 @@ Config.Weather = {
     -- This prevents conflicts with external weather management systems
     DisableOnConflict = true, -- Auto-disable if weathersync or similar resource detected
     
+    -- Known conflicting weather resources (auto-detection)
+    ConflictingResources = {
+        "weathersync",
+        "qb-weathersync",
+        "vorp_weather",
+        "rsg-weathersync",
+        "weather",
+        "redm-weather",
+        "advanced-weather"
+    },
+    
     -- Rain configuration (from visualsettings.dat)
     RainSettings = {
         NumberParticles = 98304,
