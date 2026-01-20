@@ -1,0 +1,28 @@
+<EasyInstall>
+  <Name>Best_TAA_and_Visual_Effects</Name>
+  <Author>Rus_Game_Tactics</Author>
+  <Version>1.6.0</Version>
+  <Link></Link>
+  <Metadata></Metadata>
+  <Resources>
+        <Resource>
+                <FileReplacement>
+                <GamePath>update:/common/data/visualsettings.dat</GamePath>
+                <FilePath>visualsettings.dat</FilePath>
+                </FileReplacement>
+                <FileReplacement>
+                <GamePath>update:/common/data/watertune.xml</GamePath>
+                <FilePath>watertune.xml</FilePath>
+                </FileReplacement>
+                <FileReplacement>
+                <GamePath>platform:/data/terraintessellation.xml</GamePath>
+                <FilePath>terraintessellation.xml</FilePath>
+                </FileReplacement>				
+                <FileReplacement>
+		<GamePath>common:/data/treeinfo.xml</GamePath>
+		<FilePath>treeinfo.xml</FilePath>
+	        </FileReplacement>
+  		
+        </Resource>
+    </Resources>
+</EasyInstall>
