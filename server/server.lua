@@ -1,9 +1,35 @@
 --[[
-═══════════════════════════════════════════════════════════════════
-    THE LAND OF THE WOLVES - REDM VISUAL EFFECTS SYSTEM
-    Server-Side Visual Management & Synchronization
+    ████████╗██╗     ██╗    ██╗    ██╗   ██╗██╗███████╗██╗   ██╗ █████╗ ██╗     ███████╗
+    ╚══██╔══╝██║     ██║    ██║    ██║   ██║██║██╔════╝██║   ██║██╔══██╗██║     ██╔════╝
+       ██║   ██║     ██║ █╗ ██║    ██║   ██║██║███████╗██║   ██║███████║██║     ███████╗
+       ██║   ██║     ██║███╗██║    ╚██╗ ██╔╝██║╚════██║██║   ██║██╔══██║██║     ╚════██║
+       ██║   ███████╗╚███╔███╔╝     ╚████╔╝ ██║███████║╚██████╔╝██║  ██║███████╗███████║
+       ╚═╝   ╚══════╝ ╚══╝╚══╝       ╚═══╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝
+                                                                                          
+    🐺 The Land of Wolves - RedM Visual Effects System
+    "Professional Server-Side Visual Enhancement & Management"
+    
     Version: 2.0.0
-═══════════════════════════════════════════════════════════════════
+    Author: iBoss
+    Website: www.wolves.land
+    Server: The Land of Wolves
+    
+    A comprehensive server-side visual management system featuring:
+    - Advanced timecycle modifiers with 15+ pre-configured filters
+    - Dynamic weather system with 12+ weather types and smooth transitions
+    - Enhanced lighting and shadow quality controls
+    - Sky & atmosphere customization (sun, moon, stars, fog)
+    - Water visual effects with underwater rendering
+    - Terrain tessellation for enhanced ground detail
+    - Vegetation management with LOD controls (trees, bushes, grass)
+    - 3 visual presets: Cinematic, Performance, Realistic
+    - Per-player visual preferences and performance monitoring
+    - Real-time admin commands for live visual adjustments
+    - Based on professional visual mod analysis (visualsettings.dat, watertune.xml, etc.)
+    - Supreme configuration system - everything tweakable from config.lua
+    
+    © 2026 iBoss | The Land of Wolves | www.wolves.land
+    License: All Rights Reserved
 ]]
 
 local activeVisuals = {}

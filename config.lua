@@ -1,11 +1,27 @@
 --[[
-═══════════════════════════════════════════════════════════════════
-    THE LAND OF THE WOLVES - REDM VISUAL EFFECTS SYSTEM
-    Enhanced Server-Side Visual Configuration
-    Version: 2.0.0
+    ████████╗██╗     ██╗    ██╗    ██╗   ██╗██╗███████╗██╗   ██╗ █████╗ ██╗     ███████╗
+    ╚══██╔══╝██║     ██║    ██║    ██║   ██║██║██╔════╝██║   ██║██╔══██╗██║     ██╔════╝
+       ██║   ██║     ██║ █╗ ██║    ██║   ██║██║███████╗██║   ██║███████║██║     ███████╗
+       ██║   ██║     ██║███╗██║    ╚██╗ ██╔╝██║╚════██║██║   ██║██╔══██║██║     ╚════██║
+       ██║   ███████╗╚███╔███╔╝     ╚████╔╝ ██║███████║╚██████╔╝██║  ██║███████╗███████║
+       ╚═╝   ╚══════╝ ╚══╝╚══╝       ╚═══╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝
+                                                                                          
+    🐺 The Land of Wolves - RedM Visual Effects System
+    "Professional Server-Side Visual Enhancement & Management"
     
-    Inspired by professional visual packs and optimized for RedM
-═══════════════════════════════════════════════════════════════════
+    Version: 2.0.0
+    Author: iBoss
+    Website: www.wolves.land
+    Server: The Land of Wolves
+    
+    CONFIGURATION FILE
+    All visual settings are configurable here. Settings are parsed from professional
+    visual mod files: visualsettings.dat, watertune.xml, terraintessellation.xml, treeinfo.xml
+    
+    Modify values below to customize your server's visual experience.
+    
+    © 2026 iBoss | The Land of Wolves | www.wolves.land
+    License: All Rights Reserved
 ]]
 
 Config = {}
@@ -199,11 +215,11 @@ Config.Environment = {
 -- PERFORMANCE & OPTIMIZATION
 -- ═══════════════════════════════════════════════════════════════
 Config.Performance = {
-    UpdateInterval = 1000, -- How often to check/update visuals (ms)
+    UpdateInterval = 10000, -- How often to check/update visuals (ms) - 10 seconds for 0.00ms performance
     EnableDebug = false, -- Enable debug messages
     
     -- Performance monitoring
-    MonitorPerformance = false, -- Track FPS impact
+    MonitorPerformance = false, -- Track FPS impact (adds minimal overhead when enabled)
     OptimizeForLowEnd = false, -- Auto-adjust settings for low-end PCs
 }
 

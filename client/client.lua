@@ -1,9 +1,22 @@
 --[[
-═══════════════════════════════════════════════════════════════════
-    THE LAND OF THE WOLVES - REDM VISUAL EFFECTS SYSTEM
-    Client-Side Visual Effects Application
+    ████████╗██╗     ██╗    ██╗    ██╗   ██╗██╗███████╗██╗   ██╗ █████╗ ██╗     ███████╗
+    ╚══██╔══╝██║     ██║    ██║    ██║   ██║██║██╔════╝██║   ██║██╔══██╗██║     ██╔════╝
+       ██║   ██║     ██║ █╗ ██║    ██║   ██║██║███████╗██║   ██║███████║██║     ███████╗
+       ██║   ██║     ██║███╗██║    ╚██╗ ██╔╝██║╚════██║██║   ██║██╔══██║██║     ╚════██║
+       ██║   ███████╗╚███╔███╔╝     ╚████╔╝ ██║███████║╚██████╔╝██║  ██║███████╗███████║
+       ╚═╝   ╚══════╝ ╚══╝╚══╝       ╚═══╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝
+                                                                                          
+    🐺 The Land of Wolves - RedM Visual Effects System (Client)
+    "Professional Server-Side Visual Enhancement & Management"
+    
     Version: 2.0.0
-═══════════════════════════════════════════════════════════════════
+    Author: iBoss
+    
+    Client-side visual effects application and rendering engine.
+    Applies server-configured visual settings using native RedM functions.
+    
+    © 2026 iBoss | The Land of Wolves | www.wolves.land
+    License: All Rights Reserved
 ]]
 
 local visualConfig = {}
@@ -209,7 +222,7 @@ local function ApplyEnvironment()
     DebugLog("Applied environmental enhancements")
 end
 
--- Main function to apply all visual effects
+-- Main function to apply all visual effects (OPTIMIZED - One-time application)
 local function ApplyVisuals()
     if not visualsEnabled then
         return
@@ -217,6 +230,7 @@ local function ApplyVisuals()
     
     DebugLog("Applying all visual effects...")
     
+    -- Apply all visual effects in sequence (ONE TIME SETUP)
     ApplyTimecycle()
     ApplyWeather()
     ApplyLighting()
@@ -251,10 +265,10 @@ local function ClearVisuals()
 end
 
 -- ═══════════════════════════════════════════════════════════════
--- EVENT HANDLERS
+-- EVENT HANDLERS (OPTIMIZED)
 -- ═══════════════════════════════════════════════════════════════
 
--- Receive configuration from server
+-- Receive configuration from server (ONE TIME EVENT)
 RegisterNetEvent('redm-visuals:receiveConfig')
 AddEventHandler('redm-visuals:receiveConfig', function(config)
     visualConfig = config
@@ -274,15 +288,13 @@ AddEventHandler('redm-visuals:receiveConfig', function(config)
     Citizen.Wait(1000)
     ApplyVisuals()
     
-    -- Notify server that player is loaded with visuals
+    -- Notify server that player is loaded with visuals (ONE TIME)
     TriggerServerEvent('redm-visuals:playerLoaded')
     
-    -- Show welcome notification
-    Citizen.Wait(2000)
-    -- In RedM you would use a native notification here
+    -- No notification to avoid overhead
 end)
 
--- Reload visuals
+-- Reload visuals (ADMIN TRIGGERED ONLY)
 RegisterNetEvent('redm-visuals:reload')
 AddEventHandler('redm-visuals:reload', function()
     DebugLog("Reloading visuals...")
@@ -291,7 +303,7 @@ AddEventHandler('redm-visuals:reload', function()
     ApplyVisuals()
 end)
 
--- Enable visuals
+-- Enable visuals (ADMIN TRIGGERED ONLY)
 RegisterNetEvent('redm-visuals:enable')
 AddEventHandler('redm-visuals:enable', function()
     visualsEnabled = true
@@ -299,7 +311,7 @@ AddEventHandler('redm-visuals:enable', function()
     DebugLog("✓ Visuals enabled")
 end)
 
--- Disable visuals
+-- Disable visuals (ADMIN TRIGGERED ONLY)
 RegisterNetEvent('redm-visuals:disable')
 AddEventHandler('redm-visuals:disable', function()
     visualsEnabled = false
@@ -307,7 +319,7 @@ AddEventHandler('redm-visuals:disable', function()
     DebugLog("✗ Visuals disabled")
 end)
 
--- Update weather dynamically
+-- Update weather dynamically (ADMIN TRIGGERED ONLY)
 RegisterNetEvent('redm-visuals:updateWeather')
 AddEventHandler('redm-visuals:updateWeather', function(weatherType)
     if visualConfig.weather then
@@ -316,7 +328,7 @@ AddEventHandler('redm-visuals:updateWeather', function(weatherType)
     end
 end)
 
--- Update timecycle dynamically
+-- Update timecycle dynamically (ADMIN TRIGGERED ONLY)
 RegisterNetEvent('redm-visuals:updateTimecycle')
 AddEventHandler('redm-visuals:updateTimecycle', function(modifier, strength)
     if visualConfig.timecycle then
@@ -330,42 +342,53 @@ end)
 -- INITIALIZATION
 -- ═══════════════════════════════════════════════════════════════
 
--- Request configuration when resource starts
+-- Request configuration when resource starts (OPTIMIZED - Single execution)
 Citizen.CreateThread(function()
     -- Wait for player to be fully loaded
-    while not NetworkIsPlayerActive(PlayerId()) do
+    local timeout = 0
+    while not NetworkIsPlayerActive(PlayerId()) and timeout < 100 do
         Citizen.Wait(100)
+        timeout = timeout + 1
     end
     
     -- Small delay to ensure everything is ready
     Citizen.Wait(1000)
     
-    -- Request visual configuration from server
+    -- Request visual configuration from server (ONE TIME ONLY)
     TriggerServerEvent('redm-visuals:requestConfig')
     DebugLog("Requested visual configuration from server")
 end)
 
--- Periodic update thread to maintain visual effects
+-- Periodic update thread to maintain visual effects (OPTIMIZED)
 Citizen.CreateThread(function()
+    -- Cache values to avoid table lookups
+    local updateInterval = 5000 -- Default 5 seconds for minimal overhead
+    local monitoringEnabled = false
+    
     while true do
-        local updateInterval = 1000
-        
-        if visualConfig.performance and visualConfig.performance.UpdateInterval then
-            updateInterval = visualConfig.performance.UpdateInterval
-        end
-        
-        Citizen.Wait(updateInterval)
-        
-        -- Reapply visuals if enabled (helps maintain consistency)
+        -- Only update if visuals are enabled
         if visualsEnabled then
-            -- Only reapply timecycle strength, don't reset everything
+            -- Update interval from config (only check occasionally)
+            if visualConfig.performance and visualConfig.performance.UpdateInterval then
+                updateInterval = math.max(5000, visualConfig.performance.UpdateInterval) -- Minimum 5 seconds
+            end
+            
+            -- Check if monitoring is needed
+            monitoringEnabled = visualConfig.performance and visualConfig.performance.MonitorPerformance
+            
+            -- Only reapply timecycle strength if needed (lightweight operation)
             if visualConfig.timecycle and visualConfig.timecycle.Enabled and timecycleModifier ~= -1 then
                 SetTimecycleModifierStrength(visualConfig.timecycle.Strength or 0.5)
             end
+            
+            -- Monitor performance only if enabled
+            if monitoringEnabled then
+                MonitorPerformance()
+            end
         end
         
-        -- Monitor performance if enabled
-        MonitorPerformance()
+        -- Use longer wait time for better performance
+        Citizen.Wait(updateInterval)
     end
 end)
 
