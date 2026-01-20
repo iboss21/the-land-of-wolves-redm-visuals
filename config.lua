@@ -18,7 +18,7 @@
     All visual settings are configurable here. Settings are parsed from professional
     visual mod files: visualsettings.dat, watertune.xml, terraintessellation.xml, treeinfo.xml
     
-    Modify values below to customize your server's visual experience.
+    Modify values below to customize The Land of Wolves visual experience.
     
     © 2026 iBoss | The Land of Wolves | www.wolves.land
     License: All Rights Reserved

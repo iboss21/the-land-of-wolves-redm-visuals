@@ -11,15 +11,15 @@
 
 ### 1. Basic Setup
 ```bash
-# In your server.cfg
+# In server.cfg
 ensure the-land-of-wolves-redm-visuals
 ```
 
 ### 2. First Configuration
-Open `config.lua` and set:
+Open `config.lua` and verify:
 ```lua
 Config.EnableVisuals = true
-Config.BrandName = "Your Server Name" -- Optional: customize branding
+Config.BrandName = "The Land of Wolves" -- Already configured
 ```
 
 ### 3. Choose a Preset (Optional)
@@ -27,11 +27,11 @@ Config.BrandName = "Your Server Name" -- Optional: customize branding
 Config.ActivePreset = "realistic" -- Options: cinematic, performance, realistic, or nil
 ```
 
-### 4. Start Your Server
+### 4. Start The Server
 The visual system will automatically:
 - Load and parse all configuration
 - Apply visual effects to connecting players
-- Display a branded startup banner
+- Display The Land of Wolves branded startup banner
 
 ## Understanding Visual Settings
 
@@ -256,8 +256,8 @@ Config.ActivePreset = "realistic"
 
 Add to `config.lua`:
 ```lua
-Config.Presets["myserver"] = {
-    Description = "My Server's Custom Look",
+Config.Presets["wolves_custom"] = {
+    Description = "The Land of Wolves Custom Look",
     Timecycle = { 
         Enabled = true, 
         Modifier = "rdr_sunset_01", 
@@ -268,7 +268,7 @@ Config.Presets["myserver"] = {
 }
 
 -- Activate it
-Config.ActivePreset = "myserver"
+Config.ActivePreset = "wolves_custom"
 ```
 
 ### Switching Presets In-Game
@@ -320,6 +320,8 @@ visualpreset <name>
 # Examples:
 visualpreset cinematic
 visualpreset performance
+visualpreset realistic
+visualpreset wolves_custom
 ```
 
 ## Performance Optimization

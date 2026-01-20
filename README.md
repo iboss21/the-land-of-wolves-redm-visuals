@@ -12,7 +12,7 @@
 ╚════════════════════════════════════════════════╝
 ```
 
-A comprehensive, professionally-branded server-side visual pack for RedM that transforms your server's graphics with advanced visual effects, all configurable through an intuitive config system.
+A comprehensive, professionally-branded server-side visual pack for RedM that transforms The Land of Wolves server graphics with advanced visual effects, all configurable through an intuitive config system.
 
 ## ✨ Features
 
@@ -37,10 +37,10 @@ A comprehensive, professionally-branded server-side visual pack for RedM that tr
 ## 📦 Installation
 
 1. Download or clone this repository
-2. Place the `the-land-of-wolves-redm-visuals` folder in your server's `resources` directory
-3. Add `ensure the-land-of-wolves-redm-visuals` to your `server.cfg`
-4. Configure settings in `config.lua` to your preferences
-5. Restart your server or use `refresh` and `start the-land-of-wolves-redm-visuals`
+2. Place the `the-land-of-wolves-redm-visuals` folder in the server `resources` directory
+3. Add `ensure the-land-of-wolves-redm-visuals` to `server.cfg`
+4. Configure settings in `config.lua` as needed
+5. Restart the server or use `refresh` and `start the-land-of-wolves-redm-visuals`
 
 ## ⚙️ Configuration
 
