@@ -18,5 +18,14 @@ client_scripts {
     'client/client.lua'
 }
 
+-- Visual data files (reference files for configuration)
+files {
+    'visual-data/visualsettings.dat',
+    'visual-data/watertune.xml',
+    'visual-data/terraintessellation.xml',
+    'visual-data/treeinfo.xml',
+    'visual-data/install.xml'
+}
+
 -- Metadata
 lua54 'yes'

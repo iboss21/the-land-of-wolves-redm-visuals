@@ -45,6 +45,27 @@ local function DebugLog(message)
     end
 end
 
+-- Check for conflicting weather resources
+local function CheckWeatherConflicts()
+    if not Config.Weather.DisableOnConflict then
+        return false
+    end
+    
+    -- Use the configurable list from Config
+    local conflictingResources = Config.Weather.ConflictingResources or {}
+    
+    for _, resourceName in ipairs(conflictingResources) do
+        if GetResourceState(resourceName) == "started" or GetResourceState(resourceName) == "starting" then
+            print("^3[" .. Config.BrandName .. " Visuals]^7 ^1WARNING:^7 Detected running weather resource: ^3" .. resourceName .. "^7")
+            print("^3[" .. Config.BrandName .. " Visuals]^7 Weather control has been automatically disabled to prevent conflicts")
+            print("^3[" .. Config.BrandName .. " Visuals]^7 To use this resource's weather system, stop the conflicting resource and set Config.Weather.Enabled = true")
+            return true
+        end
+    end
+    
+    return false
+end
+
 local function PrintBanner()
     print("^2╔════════════════════════════════════════════════╗^7")
     print("^2║   " .. Config.BrandName .. "   ║^7")
@@ -58,6 +79,17 @@ local function PrintBanner()
     
     if Config.ActivePreset then
         print("^6[Visuals]^7 Active Preset: ^3" .. Config.ActivePreset .. "^7")
+    end
+    
+    -- Check for weather conflicts
+    if CheckWeatherConflicts() then
+        Config.Weather.Enabled = false
+    end
+    
+    if Config.Weather.Enabled then
+        print("^6[Visuals]^7 Weather Control: ^2Enabled^7")
+    else
+        print("^6[Visuals]^7 Weather Control: ^1Disabled^7 (External weather script detected or manually disabled)")
     end
     
     DebugLog("Visual system initialized successfully")
@@ -276,6 +308,13 @@ end, true)
 -- Apply weather change to all players
 RegisterCommand('setweather', function(source, args, rawCommand)
     if source == 0 then -- Console only
+        if not Config.Weather.Enabled then
+            print("^1[" .. Config.BrandName .. " Visuals]^7 Weather control is disabled!")
+            print("^3[" .. Config.BrandName .. " Visuals]^7 This is likely because another weather resource is running.")
+            print("^3[" .. Config.BrandName .. " Visuals]^7 To enable: Stop conflicting weather resources and set Config.Weather.Enabled = true")
+            return
+        end
+        
         local weatherType = args[1]
         
         if not weatherType then
