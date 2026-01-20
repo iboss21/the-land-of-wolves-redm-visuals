@@ -42,6 +42,15 @@ A comprehensive, professionally-branded server-side visual pack for RedM that tr
 4. Configure settings in `config.lua` as needed
 5. Restart the server or use `refresh` and `start the-land-of-wolves-redm-visuals`
 
+### ⚠️ Weather Compatibility
+**IMPORTANT:** Weather control is **disabled by default** to prevent conflicts with `weathersync` and other weather scripts.
+
+- ✅ **Safe to use with weathersync** - No conflicts!
+- ✅ **Safe to use with vorp_weather** - Automatically detected
+- ✅ **Safe to use with qb-weathersync** - Fully compatible
+
+The system automatically detects common weather resources and disables its weather control. See [docs/WEATHER_COMPATIBILITY.md](docs/WEATHER_COMPATIBILITY.md) for details.
+
 ## ⚙️ Configuration
 
 The visual system is powered by configuration files that were analyzed and parsed from professional visual mods:
@@ -65,12 +74,15 @@ Config.Timecycle = {
 ### Weather System
 ```lua
 Config.Weather = {
-    Enabled = true,
+    Enabled = false, -- DISABLED BY DEFAULT (for weathersync compatibility)
+    DisableOnConflict = true, -- Auto-detect and disable on conflicts
     Type = "SUNNY",
     TransitionTime = 45000, -- milliseconds
     CycleDuration = 120, -- Based on visualsettings.dat
 }
 ```
+
+> **⚠️ Note:** Weather control is disabled by default to prevent conflicts with `weathersync`, `vorp_weather`, and similar scripts. See [Weather Compatibility Guide](docs/WEATHER_COMPATIBILITY.md) for details.
 
 **Available Weather Types:**
 SUNNY, CLOUDS, OVERCAST, RAIN, FOG, SNOW, THUNDER, BLIZZARD, DRIZZLE, SLEET, WHITEOUT, HIGHPRESSURE, MISTY, OVERCASTDARK
@@ -274,10 +286,20 @@ The system will automatically reduce settings if FPS drops below optimal levels.
 
 ## ⚖️ Compatibility
 
+### Weather Scripts
+- ✅ **weathersync** - Fully compatible (auto-detection enabled)
+- ✅ **vorp_weather** - Fully compatible (auto-detection enabled)
+- ✅ **qb-weathersync** - Fully compatible (auto-detection enabled)
+- ✅ **rsg-weathersync** - Fully compatible (auto-detection enabled)
+- ℹ️ Weather control disabled by default to prevent conflicts
+- 📖 See [Weather Compatibility Guide](docs/WEATHER_COMPATIBILITY.md) for full details
+
+### General Compatibility
 - ✅ Compatible with most RedM resources
-- ✅ Works with custom weather scripts (may override)
 - ✅ Safe for production servers
 - ✅ No game file modifications required
+- ✅ Works alongside other visual enhancement resources
+- ⚠️ May conflict with other timecycle modifier scripts (can coexist, but one should be disabled)
 
 ## 📜 Based On
 

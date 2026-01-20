@@ -49,12 +49,16 @@ Config.Timecycle = {
 -- WEATHER SYSTEM (Based on visualsettings.dat)
 -- ═══════════════════════════════════════════════════════════════
 Config.Weather = {
-    Enabled = true,
+    Enabled = false, -- DISABLED BY DEFAULT - Set to true ONLY if you don't use weathersync or other weather scripts
     Type = "SUNNY", -- Default weather type
     -- Available: SUNNY, CLOUDS, OVERCAST, RAIN, FOG, SNOW, THUNDER, BLIZZARD,
     -- DRIZZLE, SLEET, WHITEOUT, HIGHPRESSURE, MISTY, OVERCASTDARK
     TransitionTime = 45000, -- Weather transition time in ms
     CycleDuration = 120, -- Weather cycle duration (from visualsettings.dat)
+    
+    -- IMPORTANT: If you use weathersync or any other weather script, keep Enabled = false
+    -- This prevents conflicts with external weather management systems
+    DisableOnConflict = true, -- Auto-disable if weathersync or similar resource detected
     
     -- Rain configuration (from visualsettings.dat)
     RainSettings = {
